@@ -14,6 +14,7 @@ import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { HttpClientModule } from '@angular/common/http';
+import { NumberSuffixPipe } from './number-suffix.pipe';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
     BarChartComponent,
     LineChartComponent,
     PieChartComponent,
+    NumberSuffixPipe,
   ],
   imports: [
     BrowserModule,
