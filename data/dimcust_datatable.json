@@ -1,0 +1,212 @@
+[
+  {
+    "Id": 1,
+    "CustNr": 94092,
+    "CustBez": "Customer 94092",
+    "Kam": "Huber",
+    "Country": "Germany"
+  },
+  {
+    "Id": 2,
+    "CustNr": 42454,
+    "CustBez": "Customer 42454",
+    "Kam": "Huber",
+    "Country": "Germany"
+  },
+  {
+    "Id": 3,
+    "CustNr": 64694,
+    "CustBez": "Customer 64694",
+    "Kam": "Huber",
+    "Country": "Germany"
+  },
+  {
+    "Id": 4,
+    "CustNr": 21959,
+    "CustBez": "Customer 21959",
+    "Kam": "Huber",
+    "Country": "Germany"
+  },
+  {
+    "Id": 5,
+    "CustNr": 77247,
+    "CustBez": "Customer 77247",
+    "Kam": "Huber",
+    "Country": "Germany"
+  },
+  {
+    "Id": 6,
+    "CustNr": 25496,
+    "CustBez": "Customer 25496",
+    "Kam": "Huber",
+    "Country": "Germany"
+  },
+  {
+    "Id": 7,
+    "CustNr": 72689,
+    "CustBez": "Customer 72689",
+    "Kam": "Maier",
+    "Country": "USA"
+  },
+  {
+    "Id": 8,
+    "CustNr": 24748,
+    "CustBez": "Customer 24748",
+    "Kam": "Maier",
+    "Country": "USA"
+  },
+  {
+    "Id": 9,
+    "CustNr": 43665,
+    "CustBez": "Customer 43665",
+    "Kam": "Maier",
+    "Country": "USA"
+  },
+  {
+    "Id": 10,
+    "CustNr": 93834,
+    "CustBez": "Customer 93834",
+    "Kam": "Maier",
+    "Country": "USA"
+  },
+  {
+    "Id": 11,
+    "CustNr": 82501,
+    "CustBez": "Customer 82501",
+    "Kam": "Maier",
+    "Country": "USA"
+  },
+  {
+    "Id": 12,
+    "CustNr": 14876,
+    "CustBez": "Customer 14876",
+    "Kam": "Maier",
+    "Country": "USA"
+  },
+  {
+    "Id": 13,
+    "CustNr": 85287,
+    "CustBez": "Customer 85287",
+    "Kam": "Maier",
+    "Country": "South America"
+  },
+  {
+    "Id": 14,
+    "CustNr": 82863,
+    "CustBez": "Customer 82863",
+    "Kam": "Maier",
+    "Country": "South America"
+  },
+  {
+    "Id": 15,
+    "CustNr": 76128,
+    "CustBez": "Customer 76128",
+    "Kam": "Maier",
+    "Country": "South America"
+  },
+  {
+    "Id": 16,
+    "CustNr": 59276,
+    "CustBez": "Customer 59276",
+    "Kam": "Maier",
+    "Country": "South America"
+  },
+  {
+    "Id": 17,
+    "CustNr": 93657,
+    "CustBez": "Customer 93657",
+    "Kam": "Mueller",
+    "Country": "South America"
+  },
+  {
+    "Id": 18,
+    "CustNr": 47746,
+    "CustBez": "Customer 47746",
+    "Kam": "Mueller",
+    "Country": "South America"
+  },
+  {
+    "Id": 19,
+    "CustNr": 13113,
+    "CustBez": "Customer 13113",
+    "Kam": "Mueller",
+    "Country": "Austria"
+  },
+  {
+    "Id": 20,
+    "CustNr": 61229,
+    "CustBez": "Customer 61229",
+    "Kam": "Mueller",
+    "Country": "Austria"
+  },
+  {
+    "Id": 21,
+    "CustNr": 38680,
+    "CustBez": "Customer 38680",
+    "Kam": "Mueller",
+    "Country": "Austria"
+  },
+  {
+    "Id": 22,
+    "CustNr": 95335,
+    "CustBez": "Customer 95335",
+    "Kam": "Mueller",
+    "Country": "South America"
+  },
+  {
+    "Id": 23,
+    "CustNr": 53033,
+    "CustBez": "Customer 53033",
+    "Kam": "Mueller",
+    "Country": "Switzerland"
+  },
+  {
+    "Id": 24,
+    "CustNr": 29263,
+    "CustBez": "Customer 29263",
+    "Kam": "Mueller",
+    "Country": "Switzerland"
+  },
+  {
+    "Id": 25,
+    "CustNr": 74249,
+    "CustBez": "Customer 74249",
+    "Kam": "Mueller",
+    "Country": "Switzerland"
+  },
+  {
+    "Id": 26,
+    "CustNr": 46302,
+    "CustBez": "Customer 46302",
+    "Kam": "Mueller",
+    "Country": "Switzerland"
+  },
+  {
+    "Id": 27,
+    "CustNr": 72706,
+    "CustBez": "Customer 72706",
+    "Kam": "Mueller",
+    "Country": "Switzerland"
+  },
+  {
+    "Id": 28,
+    "CustNr": 95215,
+    "CustBez": "Customer 95215",
+    "Kam": "Mueller",
+    "Country": "France"
+  },
+  {
+    "Id": 29,
+    "CustNr": 88274,
+    "CustBez": "Customer 88274",
+    "Kam": "Mueller",
+    "Country": "France"
+  },
+  {
+    "Id": 30,
+    "CustNr": 51169,
+    "CustBez": "Customer 51169",
+    "Kam": "Mueller",
+    "Country": "France"
+  }
+]

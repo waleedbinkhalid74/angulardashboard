@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LINE_CHART_COLORS } from '../../shared/chart.colors';
 import * as data from '../../../../data/measures_datatable.json';
+import * as keyacc from '../../../../data/dimcust_datatable.json';
 
 const LINE_CHART_SAMPLE_DATA: any[] = [
   { data: [5, 4, 9, 7, 1], label: "Sales Volume" }
@@ -16,53 +17,63 @@ const LINE_CHART_SAMPLE_LABELS: string[] = ["2016", "2017", "2018", "2019", "202
 })
 export class LineChartComponent implements OnInit {
   measurements_data: any[];
-  sum2016: number[] = [0, 0, 0, 0, 0, 0];
-  salesVolume:any [] = [
-    {data: this.sum2016, label:"Sales Volume"}
+  key_acc_data: any[];
+  sumSalesVolume: number[] = [0, 0, 0, 0, 0, 0];
+  sumKeyAccManager: number[] = [0, 0, 0];
+  salesVolume: any[] = [
+    { data: this.sumSalesVolume, label: "Sales Volume" }
   ];
-  
+
   constructor() { }
 
   ngOnInit(): void {
     this.measurements_data = <any>data.default;
-    //    console.log(ExcelDateToJSDate(this.measurements_data[3].Date));
-    //    console.log(this.measurements_data.length);
-    //    console.log(this.measurements_data[3].ArtNr);
+    this.key_acc_data = <any>keyacc.default;
+    console.log(this.key_acc_data[1]);
+    console.log(this.measurements_data[1]);
     for (var _i = 0; _i < this.measurements_data.length; _i++) {
       this.measurements_data[_i].Date = ExcelDateToJSDate(this.measurements_data[_i].Date);
       //      console.log(this.measurements_data[_i].Date);
     }
+    //________________________________________________________________Sum of sales over year_____________________________________________________
     //Taking sum of sales over the period of years
     for (var _i = 0; _i < this.measurements_data.length; _i++) {
       if (this.measurements_data[_i].Date.getTime() <= new Date("2016").getTime()) {
         //  console.log(this.measurements_data[_i].Date);
-        this.sum2016[0] += this.measurements_data[_i].SalesVolume;
+        this.sumSalesVolume[0] += this.measurements_data[_i].SalesVolume;
       }
       else if (this.measurements_data[_i].Date.getTime() <= new Date("2017").getTime() && this.measurements_data[_i].Date.getTime() >= new Date("2015").getTime()) {
-        this.sum2016[1] += this.measurements_data[_i].SalesVolume;
+        this.sumSalesVolume[1] += this.measurements_data[_i].SalesVolume;
       }
       else if (this.measurements_data[_i].Date.getTime() <= new Date("2018").getTime() && this.measurements_data[_i].Date.getTime() >= new Date("2016").getTime()) {
-        this.sum2016[2] += this.measurements_data[_i].SalesVolume;
+        this.sumSalesVolume[2] += this.measurements_data[_i].SalesVolume;
       }
       else if (this.measurements_data[_i].Date.getTime() <= new Date("2019").getTime() && this.measurements_data[_i].Date.getTime() >= new Date("2017").getTime()) {
-        this.sum2016[3] += this.measurements_data[_i].SalesVolume;
+        this.sumSalesVolume[3] += this.measurements_data[_i].SalesVolume;
       }
       else if (this.measurements_data[_i].Date.getTime() <= new Date("2020").getTime() && this.measurements_data[_i].Date.getTime() >= new Date("2018").getTime()) {
-        this.sum2016[4] += this.measurements_data[_i].SalesVolume;
+        this.sumSalesVolume[4] += this.measurements_data[_i].SalesVolume;
       }
       else if (this.measurements_data[_i].Date.getTime() <= new Date("2021").getTime()) {
-        this.sum2016[5] += this.measurements_data[_i].SalesVolume;
+        this.sumSalesVolume[5] += this.measurements_data[_i].SalesVolume;
       }
       else {
-        console.log("Error");
+        console.log("Error date not in list");
       }
     }
-    console.log(this.sum2016);
+    //    console.log(this.sumSalesVolume);
+    //_____________________________________________________________Key account manager sales________________________________________________________
+    
   }
 
   lineChartData = this.salesVolume;
   lineChartLabels = LINE_CHART_SAMPLE_LABELS;
   lineChartOptions: any = {
+    elements: {
+      line: {
+        tension: 0
+      }
+    },
     responsive: true,
     maintainAspectRatio: false
   };

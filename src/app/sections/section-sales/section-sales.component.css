@@ -1,3 +1,13 @@
 .card-bottom{
-    height: 50vh;
+    height: 60vh;
+}
+
+h5{
+    font-size: medium;
+    text-align: center;
+}
+
+h6{
+    text-align: center;
+    font-size: xx-large;
 }
