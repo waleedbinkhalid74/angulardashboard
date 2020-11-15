@@ -10,6 +10,8 @@ export class SectionSalesComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-  }
+
+
+}
 
 }
