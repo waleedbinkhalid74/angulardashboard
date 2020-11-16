@@ -20,24 +20,26 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     console.log(this.maxValue);
   }
-logText: string = '';
-/*
-  onUserChangeStart(changeContext: ChangeContext): void {
-    this.logText += `onUserChangeStart(${this.getChangeContextString(changeContext)})\n`;
-  }
-
-  onUserChange(changeContext: ChangeContext): void {
-    this.logText += `onUserChange(${this.getChangeContextString(changeContext)})\n`;
-  }
-*/
+  highVal: number= 2020;
+  lowVal: number = 2015;
+  /*
+    onUserChangeStart(changeContext: ChangeContext): void {
+      this.logText += `onUserChangeStart(${this.getChangeContextString(changeContext)})\n`;
+    }
+  
+    onUserChange(changeContext: ChangeContext): void {
+      this.logText += `onUserChange(${this.getChangeContextString(changeContext)})\n`;
+    }
+  */
+ //Fetching value from slider
   onUserChangeEnd(changeContext: ChangeContext): void {
-    this.logText += `onUserChangeEnd(${this.getChangeContextString(changeContext)})\n`;
-    console.log(this.logText);
+    //    this.logText += `onUserChangeEnd(${this.getChangeContextString(changeContext)})\n`;
+    this.highVal = this.getChangeContextString(changeContext)[1];
+    this.lowVal = this.getChangeContextString(changeContext)[0];
+//    console.log(this.highVal);
   }
 
-  getChangeContextString(changeContext: ChangeContext): string {
-    return `{pointerType: ${changeContext.pointerType === PointerType.Min ? 'Min' : 'Max'}, ` +
-           `value: ${changeContext.value}, ` +
-           `highValue: ${changeContext.highValue}}`;
+  getChangeContextString(changeContext: ChangeContext): number[] {
+    return [changeContext.value, changeContext.highValue];
   }
 }
