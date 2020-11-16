@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Options, ChangeContext, PointerType } from '@angular-slider/ngx-slider';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,32 +15,30 @@ export class SidebarComponent implements OnInit {
     ceil: 2020,
     showTicks: true
   };
-
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
-    console.log(this.maxValue);
+    this.userService.castLowDate.subscribe(
+      val => this.lowVal = val
+    );
+    this.userService.castHighDate.subscribe(
+      val => this.highVal = val
+    );
   }
-  highVal: number= 2020;
-  lowVal: number = 2015;
-  /*
-    onUserChangeStart(changeContext: ChangeContext): void {
-      this.logText += `onUserChangeStart(${this.getChangeContextString(changeContext)})\n`;
-    }
+  highVal: number;
+  lowVal: number;
   
-    onUserChange(changeContext: ChangeContext): void {
-      this.logText += `onUserChange(${this.getChangeContextString(changeContext)})\n`;
-    }
-  */
  //Fetching value from slider
   onUserChangeEnd(changeContext: ChangeContext): void {
-    //    this.logText += `onUserChangeEnd(${this.getChangeContextString(changeContext)})\n`;
-    this.highVal = this.getChangeContextString(changeContext)[1];
     this.lowVal = this.getChangeContextString(changeContext)[0];
-//    console.log(this.highVal);
+    this.highVal = this.getChangeContextString(changeContext)[1];
+    this.userService.editUser(this.lowVal, this.highVal);
+//    console.log("The LOW value is now: ", this.lowVal);
+//    console.log("The HIGH value is now: ", this.highVal);
   }
 
   getChangeContextString(changeContext: ChangeContext): number[] {
     return [changeContext.value, changeContext.highValue];
   }
+
 }

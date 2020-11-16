@@ -29,8 +29,6 @@ export class LineChartComponent implements OnInit {
     //    console.log(this.filter_start_date);
     this.measurements_data = <any>data.default;
     this.key_acc_data = <any>keyacc.default;
-    //    console.log(this.key_acc_data[1]);
-    //   console.log(this.measurements_data[1]);
     for (var _i = 0; _i < this.measurements_data.length; _i++) {
       this.measurements_data[_i].Date = ExcelDateToJSDate(this.measurements_data[_i].Date);
       //      console.log(this.measurements_data[_i].Date);
@@ -62,13 +60,10 @@ export class LineChartComponent implements OnInit {
       }
     }
     //Applying Date Filter
-    this.lineChartxArray   = filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, this.filter_start_date, this.filter_end_date)[0];
-    this.sumSalesVolume = filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, this.filter_start_date, this.filter_end_date)[1];
+ //   this.lineChartxArray   = filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, this.filter_start_date, this.filter_end_date)[0];
+ //   this.sumSalesVolume = filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, this.filter_start_date, this.filter_end_date)[1];
     //console.log(filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, filter_start_date, filter_end_date));
     console.log(this.salesVolume[0]);
-
-
-
   }
 
   salesVolume: any[] = [

@@ -16,6 +16,7 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NumberSuffixPipe } from './number-suffix.pipe';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     HttpClientModule,
     NgxSliderModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
