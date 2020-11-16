@@ -15,6 +15,7 @@ import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NumberSuffixPipe } from './number-suffix.pipe';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { NumberSuffixPipe } from './number-suffix.pipe';
     AppRoutingModule,
     RouterModule.forChild(appRoutes),
     ChartsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

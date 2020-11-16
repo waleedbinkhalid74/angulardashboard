@@ -2,12 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LINE_CHART_COLORS } from '../../shared/chart.colors';
 import * as data from '../../../../data/measures_datatable.json';
 import * as keyacc from '../../../../data/dimcust_datatable.json';
+import { element } from 'protractor';
 
-const LINE_CHART_SAMPLE_DATA: any[] = [
-  { data: [5, 4, 9, 7, 1], label: "Sales Volume" }
-];
 
-const LINE_CHART_SAMPLE_LABELS: string[] = ["2016", "2017", "2018", "2019", "2020"];
 
 
 @Component({
@@ -16,21 +13,24 @@ const LINE_CHART_SAMPLE_LABELS: string[] = ["2016", "2017", "2018", "2019", "202
   styleUrls: ['./line-chart.component.css']
 })
 export class LineChartComponent implements OnInit {
+  lineChartxArray: number[] = [2015, 2016, 2017, 2018, 2019, 2020];
   measurements_data: any[];
   key_acc_data: any[];
   sumSalesVolume: number[] = [0, 0, 0, 0, 0, 0];
   sumKeyAccManager: number[] = [0, 0, 0];
-  salesVolume: any[] = [
-    { data: this.sumSalesVolume, label: "Sales Volume" }
-  ];
+
+  filter_start_date: number = 2016;
+  filter_end_date: number = 2018;
+ 
 
   constructor() { }
 
   ngOnInit(): void {
+    //    console.log(this.filter_start_date);
     this.measurements_data = <any>data.default;
     this.key_acc_data = <any>keyacc.default;
-    console.log(this.key_acc_data[1]);
-    console.log(this.measurements_data[1]);
+    //    console.log(this.key_acc_data[1]);
+    //   console.log(this.measurements_data[1]);
     for (var _i = 0; _i < this.measurements_data.length; _i++) {
       this.measurements_data[_i].Date = ExcelDateToJSDate(this.measurements_data[_i].Date);
       //      console.log(this.measurements_data[_i].Date);
@@ -61,13 +61,22 @@ export class LineChartComponent implements OnInit {
         console.log("Error date not in list");
       }
     }
-    //    console.log(this.sumSalesVolume);
-    //_____________________________________________________________Key account manager sales________________________________________________________
-    
+    //Applying Date Filter
+    this.lineChartxArray   = filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, this.filter_start_date, this.filter_end_date)[0];
+    this.sumSalesVolume = filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, this.filter_start_date, this.filter_end_date)[1];
+    //console.log(filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, filter_start_date, filter_end_date));
+    console.log(this.salesVolume[0]);
+
+
+
   }
 
+  salesVolume: any[] = [
+    { data: this.sumSalesVolume, xArray: this.lineChartxArray, label: "Sales Volume" }
+  ];
+
   lineChartData = this.salesVolume;
-  lineChartLabels = LINE_CHART_SAMPLE_LABELS;
+  lineChartLabels = this.salesVolume[0].xArray;
   lineChartOptions: any = {
     elements: {
       line: {
@@ -80,6 +89,7 @@ export class LineChartComponent implements OnInit {
   lineChartLegend = true;
   lineChartType = 'line'
   lineChartColors = LINE_CHART_COLORS;
+
 }
 
 //Converts back to date
@@ -102,5 +112,8 @@ function ExcelDateToJSDate(serial) {
   return new Date(date_info.getFullYear(), date_info.getMonth(), date_info.getDate(), hours, minutes, seconds);
 }
 
+function filterByDate(xarr, yarr, startDate, endDate) {
+  return [xarr.slice(xarr.indexOf(startDate), xarr.indexOf(endDate) + 1), yarr.slice(xarr.indexOf(startDate), xarr.indexOf(endDate) + 1)]
+}
 
 
