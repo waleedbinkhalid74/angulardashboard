@@ -3,18 +3,28 @@
         <div class="card-deck">
             <div class="card mb-3 shadow card-theme">
                 <div class="card-header card-header-theme">
-                    <h5>Chart 1</h5>
+                    <h5>Key Accounts Manager Maier</h5>
                 </div>
                 <div class="card-body">
-                    <app-bar-chart></app-bar-chart>
+                    <h6>{{ sumKeyAccManager[0] | numberSuffix }}</h6>
                 </div>
             </div>
             <div class="card mb-3 shadow card-theme">
                 <div class="card-header card-header-theme">
-                    <h5>Chart 2</h5>
+                    <h5>Key Accounts Manager Huber</h5>
                 </div>
                 <div class="card-body">
-                    <app-pie-chart></app-pie-chart>
+                    <h6>{{sumKeyAccManager[1] | numberSuffix}}</h6>
+                </div>
+            </div>
+            <div class="card mb-3 shadow card-theme">
+                <div class="card-header card-header-theme">
+                    <h5>Key Accounts Manager Mueller</h5>
+                </div>
+                <div class="card-body">
+                    <h6>{{sumKeyAccManager[2] | numberSuffix}} </h6>
+
+                    <p>temp {{measurementDataJSON[1].Date}}</p>
                 </div>
             </div>
         </div>
@@ -22,7 +32,7 @@
     <div class="row-fluid cards">
         <div class="card shadow card-theme card-bottom">
             <div class="card-header card-header theme">
-                <h5>Monthly Sales</h5>
+                <h4>Monthly Sales</h4>
             </div>
             <div class="card-body">
                 <app-line-chart></app-line-chart>

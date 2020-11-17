@@ -13,6 +13,10 @@ import { SectionHealthComponent } from './sections/section-health/section-health
 import { BarChartComponent } from './charts/bar-chart/bar-chart.component';
 import { LineChartComponent } from './charts/line-chart/line-chart.component';
 import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
+import { HttpClientModule } from '@angular/common/http';
+import { NumberSuffixPipe } from './number-suffix.pipe';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { UserService } from './user.service';
 
 @NgModule({
   declarations: [
@@ -25,14 +29,17 @@ import { PieChartComponent } from './charts/pie-chart/pie-chart.component';
     BarChartComponent,
     LineChartComponent,
     PieChartComponent,
+    NumberSuffixPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forChild(appRoutes),
-    ChartsModule
+    ChartsModule,
+    HttpClientModule,
+    NgxSliderModule
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

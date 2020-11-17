@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Options, ChangeContext, PointerType } from '@angular-slider/ngx-slider';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -6,10 +8,37 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./sidebar.component.css']
 })
 export class SidebarComponent implements OnInit {
-
-  constructor() { }
+  minValue: number = 2015;
+  maxValue: number = 2020;
+  options: Options = {
+    floor: 2015,
+    ceil: 2020,
+    showTicks: true
+  };
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    this.userService.castLowDate.subscribe(
+      val => this.lowVal = val
+    );
+    this.userService.castHighDate.subscribe(
+      val => this.highVal = val
+    );
+  }
+  highVal: number;
+  lowVal: number;
+  
+ //Fetching value from slider
+  onUserChangeEnd(changeContext: ChangeContext): void {
+    this.lowVal = this.getChangeContextString(changeContext)[0];
+    this.highVal = this.getChangeContextString(changeContext)[1];
+    this.userService.editUser(this.lowVal, this.highVal);
+//    console.log("The LOW value is now: ", this.lowVal);
+//    console.log("The HIGH value is now: ", this.highVal);
+  }
+
+  getChangeContextString(changeContext: ChangeContext): number[] {
+    return [changeContext.value, changeContext.highValue];
   }
 
 }
