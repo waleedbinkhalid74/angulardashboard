@@ -13,9 +13,10 @@ export class UserService {
   private highDate = new BehaviorSubject<number>(2020);
   private measurementData = new BehaviorSubject<any[]>(mdata.default);
   private keyAccMananger = new BehaviorSubject<any[]>(kdata.default);
-  private sumSalesVolume = new BehaviorSubject<number[]>([0, 0, 0, 0, 0, 0]);
   private sumKeyAccManager = new BehaviorSubject<number[]>([0,0,0]);
   private tempMeasurementsArray = new BehaviorSubject<any[]>(mdata.default);
+  private sumSalesVolume = new BehaviorSubject<number[]>([0,0,0,0,0,0]);
+  private datesXArray = new BehaviorSubject<number[]>([2015,2016,2017,2018,2019,2020]);
 
   castHighDate = this.highDate.asObservable();
   castLowDate = this.lowDate.asObservable();
@@ -24,7 +25,7 @@ export class UserService {
   castKeyAccManager = this.keyAccMananger.asObservable();
   castSumKeyAccManager = this.sumKeyAccManager.asObservable();
   castTempMeasurementsArray = this.tempMeasurementsArray.asObservable();
-
+  castDatesXArray = this.datesXArray.asObservable();
   // for (var _i = 0; _i < this.measurementData[1].length; _i++) {
   //   this.measurementData[_i].Date = this.ExcelDateToJSDate(this.castMeasurementData[_i].Date);
   // }
@@ -34,15 +35,14 @@ export class UserService {
   editUser(lDate, hDate, mData, kamNames) {
     this.highDate.next(hDate);
     this.lowDate.next(lDate);
-    this.sumSalesVolume.next(new Array(hDate - lDate).fill(0));
+//    this.sumSalesVolume.next(new Array(hDate - lDate).fill(0));
     this.tempMeasurementsArray.next(this.measurementData.value.filter(function(value){
-//      console.log(value.Date < new Date(hDate.toString()));
         return value.Date <= new Date((hDate+1).toString()) && value.Date >= new Date((lDate).toString()) ;
     }));
     this.sumKeyAccManager.next(keyAccManagerSummer(this.keyAccMananger.value, this.tempMeasurementsArray.value));
-    // this.sumKeyAccManager.next(this.keyAccMananger.value.filter(function(value){
-    //   console.log(value.Kam == kamNames[0])
-    // }));
+    this.sumSalesVolume.next(salesChartData(this.tempMeasurementsArray.value)[0]);
+    this.datesXArray.next(salesChartData(this.tempMeasurementsArray.value)[1]);
+    console.log(this.datesXArray.value);
   }
 
   ExcelDateToJSDate(serial) {
@@ -65,7 +65,6 @@ export class UserService {
   }
 
 }
-
 
 function keyAccManagerSummer(kdata, mdata){
   var sumKamSales: number[] = [0,0,0];
@@ -99,4 +98,45 @@ function keyAccManagerSummer(kdata, mdata){
     }
   }
   return sumKamSales;
+}
+
+function salesChartData(mdata){
+  var sumSalesYear: number[] = [0,0,0,0,0,0];
+  var dates: number[] = [2015, 2016, 2017, 2018, 2019, 2020];
+
+  for (var _i = 0; _i < mdata.length; _i++) {
+    if (mdata[_i].Date.getTime() <= new Date("2016").getTime()) {
+      //  console.log(mdata[_i].Date);
+      sumSalesYear[0] += mdata[_i].SalesVolume;
+    }
+    else if (mdata[_i].Date.getTime() <= new Date("2017").getTime() && mdata[_i].Date.getTime() >= new Date("2015").getTime()) {
+      sumSalesYear[1] += mdata[_i].SalesVolume;
+    }
+    else if (mdata[_i].Date.getTime() <= new Date("2018").getTime() && mdata[_i].Date.getTime() >= new Date("2016").getTime()) {
+      sumSalesYear[2] += mdata[_i].SalesVolume;
+    }
+    else if (mdata[_i].Date.getTime() <= new Date("2019").getTime() && mdata[_i].Date.getTime() >= new Date("2017").getTime()) {
+      sumSalesYear[3] += mdata[_i].SalesVolume;
+    }
+    else if (mdata[_i].Date.getTime() <= new Date("2020").getTime() && mdata[_i].Date.getTime() >= new Date("2018").getTime()) {
+      sumSalesYear[4] += mdata[_i].SalesVolume;
+    }
+    else if (mdata[_i].Date.getTime() <= new Date("2021").getTime()) {
+      sumSalesYear[5] += mdata[_i].SalesVolume;
+    }
+    else {
+      console.log("Error date not in list");
+    }
+  }
+  for(var i=0; i<sumSalesYear.length; i++ )
+     { 
+        if(sumSalesYear[i]==0){
+            sumSalesYear.splice(i,1); 
+            dates.splice(i,1)
+            i--;
+          }
+      }
+
+//console.log([sumSalesYear, dates]);
+  return [sumSalesYear, dates];
 }
