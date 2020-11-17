@@ -31,7 +31,7 @@ export class UserService {
   //  this.castMeasurementData; 
   constructor() { }
 
-  editUser(lDate, hDate) {
+  editUser(lDate, hDate, mData, kamNames) {
     this.highDate.next(hDate);
     this.lowDate.next(lDate);
     this.sumSalesVolume.next(new Array(hDate - lDate).fill(0));
@@ -39,7 +39,10 @@ export class UserService {
 //      console.log(value.Date < new Date(hDate.toString()));
         return value.Date <= new Date((hDate+1).toString()) && value.Date >= new Date((lDate).toString()) ;
     }));
-    //  console.log(this.sumSalesVolume.value);
+    this.sumKeyAccManager.next(keyAccManagerSummer(this.keyAccMananger.value, this.tempMeasurementsArray.value));
+    // this.sumKeyAccManager.next(this.keyAccMananger.value.filter(function(value){
+    //   console.log(value.Kam == kamNames[0])
+    // }));
   }
 
   ExcelDateToJSDate(serial) {
@@ -63,7 +66,37 @@ export class UserService {
 
 }
 
-function filterByDate(xarr, yarr, startDate, endDate) {
-  return [xarr.slice(xarr.indexOf(startDate), xarr.indexOf(endDate) + 1), yarr.slice(xarr.indexOf(startDate), xarr.indexOf(endDate) + 1)]
-}
 
+function keyAccManagerSummer(kdata, mdata){
+  var sumKamSales: number[] = [0,0,0];
+  for (var _j = 0; _j < kdata.length; _j++) {
+    if (kdata[_j].Kam == "Maier") {
+      for (var k = 0; k < mdata.length; k++) {
+        if (kdata[_j].CustNr == mdata[k].CustNr) {
+          sumKamSales[0] += mdata[k].SalesVolume;
+        }
+      }
+      //        console.log(this.key_acc_data[_j].CustNr);
+    }
+    else if (kdata[_j].Kam == "Huber") {
+      //      console.log(this.key_acc_data[_j].CustNr);
+      for (var k = 0; k < mdata.length; k++) {
+        if (kdata[_j].CustNr == mdata[k].CustNr) {
+          sumKamSales[1] += mdata[k].SalesVolume;
+        }
+      }
+    }
+    else if (kdata[_j].Kam == "Mueller") {
+      //    console.log(this.key_acc_data[_j].CustNr);
+      for (var k = 0; k < mdata.length; k++) {
+        if (kdata[_j].CustNr == mdata[k].CustNr) {
+          sumKamSales[2] += mdata[k].SalesVolume;
+        }
+      }
+    }
+    else {
+        console.log("Error. Name not in list");
+    }
+  }
+  return sumKamSales;
+}

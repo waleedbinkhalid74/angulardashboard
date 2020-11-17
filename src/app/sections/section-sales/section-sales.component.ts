@@ -29,6 +29,9 @@ export class SectionSalesComponent implements OnInit {
      this.userService.castKeyAccManager.subscribe(
        val => this.key_acc_data = val
      );
+     this.userService.castSumKeyAccManager.subscribe(
+      val => this.sumKeyAccManager = val
+    );
      this.cdr.detectChanges();
 
 //    console.log("HOLLER",typeof(this.measurementDataJSON));    
