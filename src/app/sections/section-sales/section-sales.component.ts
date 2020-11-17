@@ -1,5 +1,4 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import * as keyacc from '../../../../data/dimcust_datatable.json';
 import {UserService} from '../../user.service';
 
 @Component({
@@ -29,11 +28,10 @@ export class SectionSalesComponent implements OnInit {
      this.userService.castKeyAccManager.subscribe(
        val => this.key_acc_data = val
      );
+     this.userService.castSumKeyAccManager.subscribe(
+      val => this.sumKeyAccManager = val
+    );
      this.cdr.detectChanges();
-
-//    console.log("HOLLER",typeof(this.measurementDataJSON));    
-//    console.log("HOLLER",new Date(this.highVal.toString()));    
-//    console.log("HOLLER",ExcelDateToJSDate(this.measurementDataJSON[1].Date) <= new Date("2021"));
 
 
     for (var _j = 0; _j < this.key_acc_data.length; _j++) {

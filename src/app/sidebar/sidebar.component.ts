@@ -24,15 +24,20 @@ export class SidebarComponent implements OnInit {
     this.userService.castHighDate.subscribe(
       val => this.highVal = val
     );
+    this.userService.castTempMeasurementsArray.subscribe(
+      val => this.measurementDataJSON = val
+    );
   }
   highVal: number;
   lowVal: number;
-  
+  measurementDataJSON: any[];
+  keyAccManagerNames:string[] = ["Maier", "Huber", "Mueller"];
+
  //Fetching value from slider
   onUserChangeEnd(changeContext: ChangeContext): void {
     this.lowVal = this.getChangeContextString(changeContext)[0];
     this.highVal = this.getChangeContextString(changeContext)[1];
-    this.userService.editUser(this.lowVal, this.highVal);
+    this.userService.editUser(this.lowVal, this.highVal, this.measurementDataJSON, this.keyAccManagerNames);
 //    console.log("The LOW value is now: ", this.lowVal);
 //    console.log("The HIGH value is now: ", this.highVal);
   }
