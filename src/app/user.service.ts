@@ -1,8 +1,10 @@
 import { CastExpr } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import * as mdata from '../../data/measures_datatable.json';
-import * as kdata from '../../data/dimcust_datatable.json';
+import * as mdata from '../../data/measures_datatable.json'; //Sales Volume Data
+import * as kdata from '../../data/dimcust_datatable.json'; // Key acc managers data
+import * as adata from '../../data/dimart_datatable.json'; // article data
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +19,7 @@ export class UserService {
   private tempMeasurementsArray = new BehaviorSubject<any[]>(mdata.default);
   private sumSalesVolume = new BehaviorSubject<number[]>([0,0,0,0,0,0]);
   private datesXArray = new BehaviorSubject<number[]>([2015,2016,2017,2018,2019,2020]);
+  private articleData = new BehaviorSubject<any[]>(adata.default);
 
   castHighDate = this.highDate.asObservable();
   castLowDate = this.lowDate.asObservable();
@@ -26,6 +29,7 @@ export class UserService {
   castSumKeyAccManager = this.sumKeyAccManager.asObservable();
   castTempMeasurementsArray = this.tempMeasurementsArray.asObservable();
   castDatesXArray = this.datesXArray.asObservable();
+  castArticleData = this.articleData.asObservable();
   // for (var _i = 0; _i < this.measurementData[1].length; _i++) {
   //   this.measurementData[_i].Date = this.ExcelDateToJSDate(this.castMeasurementData[_i].Date);
   // }

@@ -1,0 +1,415 @@
+[
+  {
+    "Id": 1,
+    "ArtNr": 1455,
+    "ArtBez": "Article 1455",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 2,
+    "ArtNr": 2603,
+    "ArtBez": "Article 2603",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 3,
+    "ArtNr": 2640,
+    "ArtBez": "Article 2640",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 4,
+    "ArtNr": 6677,
+    "ArtBez": "Article 6677",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 5,
+    "ArtNr": 5263,
+    "ArtBez": "Article 5263",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 6,
+    "ArtNr": 7915,
+    "ArtBez": "Article 7915",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 7,
+    "ArtNr": 5033,
+    "ArtBez": "Article 5033",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 8,
+    "ArtNr": 9660,
+    "ArtBez": "Article 9660",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 9,
+    "ArtNr": 7604,
+    "ArtBez": "Article 7604",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 10,
+    "ArtNr": 9168,
+    "ArtBez": "Article 9168",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 11,
+    "ArtNr": 4011,
+    "ArtBez": "Article 4011",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 12,
+    "ArtNr": 3627,
+    "ArtBez": "Article 3627",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 13,
+    "ArtNr": 7929,
+    "ArtBez": "Article 7929",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 14,
+    "ArtNr": 7178,
+    "ArtBez": "Article 7178",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 15,
+    "ArtNr": 9426,
+    "ArtBez": "Article 9426",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 16,
+    "ArtNr": 7697,
+    "ArtBez": "Article 7697",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 17,
+    "ArtNr": 4426,
+    "ArtBez": "Article 4426",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 18,
+    "ArtNr": 8248,
+    "ArtBez": "Article 8248",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 19,
+    "ArtNr": 9835,
+    "ArtBez": "Article 9835",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 20,
+    "ArtNr": 5979,
+    "ArtBez": "Article 5979",
+    "GrI": "Standard",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 21,
+    "ArtNr": 8340,
+    "ArtBez": "Article 8340",
+    "GrI": "Premium",
+    "GrII": "Brand"
+  },
+  {
+    "Id": 22,
+    "ArtNr": 6014,
+    "ArtBez": "Article 6014",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 23,
+    "ArtNr": 6164,
+    "ArtBez": "Article 6164",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 24,
+    "ArtNr": 9268,
+    "ArtBez": "Article 9268",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 25,
+    "ArtNr": 2321,
+    "ArtBez": "Article 2321",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 26,
+    "ArtNr": 6623,
+    "ArtBez": "Article 6623",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 27,
+    "ArtNr": 3975,
+    "ArtBez": "Article 3975",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 28,
+    "ArtNr": 8724,
+    "ArtBez": "Article 8724",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 29,
+    "ArtNr": 5458,
+    "ArtBez": "Article 5458",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 30,
+    "ArtNr": 7020,
+    "ArtBez": "Article 7020",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 31,
+    "ArtNr": 3025,
+    "ArtBez": "Article 3025",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 32,
+    "ArtNr": 5647,
+    "ArtBez": "Article 5647",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 33,
+    "ArtNr": 2088,
+    "ArtBez": "Article 2088",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 34,
+    "ArtNr": 5184,
+    "ArtBez": "Article 5184",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 35,
+    "ArtNr": 2926,
+    "ArtBez": "Article 2926",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 36,
+    "ArtNr": 5410,
+    "ArtBez": "Article 5410",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 37,
+    "ArtNr": 9678,
+    "ArtBez": "Article 9678",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 38,
+    "ArtNr": 2435,
+    "ArtBez": "Article 2435",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 39,
+    "ArtNr": 1474,
+    "ArtBez": "Article 1474",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 40,
+    "ArtNr": 5628,
+    "ArtBez": "Article 5628",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 41,
+    "ArtNr": 2513,
+    "ArtBez": "Article 2513",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 42,
+    "ArtNr": 5561,
+    "ArtBez": "Article 5561",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 43,
+    "ArtNr": 5450,
+    "ArtBez": "Article 5450",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 44,
+    "ArtNr": 3689,
+    "ArtBez": "Article 3689",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 45,
+    "ArtNr": 8554,
+    "ArtBez": "Article 8554",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 46,
+    "ArtNr": 8479,
+    "ArtBez": "Article 8479",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 47,
+    "ArtNr": 1558,
+    "ArtBez": "Article 1558",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 48,
+    "ArtNr": 5131,
+    "ArtBez": "Article 5131",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 49,
+    "ArtNr": 5906,
+    "ArtBez": "Article 5906",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 50,
+    "ArtNr": 6476,
+    "ArtBez": "Article 6476",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 51,
+    "ArtNr": 8849,
+    "ArtBez": "Article 8849",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 52,
+    "ArtNr": 3805,
+    "ArtBez": "Article 3805",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 53,
+    "ArtNr": 3157,
+    "ArtBez": "Article 3157",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 54,
+    "ArtNr": 1194,
+    "ArtBez": "Article 1194",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 55,
+    "ArtNr": 3787,
+    "ArtBez": "Article 3787",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 56,
+    "ArtNr": 2787,
+    "ArtBez": "Article 2787",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 57,
+    "ArtNr": 5250,
+    "ArtBez": "Article 5250",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 58,
+    "ArtNr": 7937,
+    "ArtBez": "Article 7937",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  },
+  {
+    "Id": 59,
+    "ArtNr": 6745,
+    "ArtBez": "Article 6745",
+    "GrI": "Budget",
+    "GrII": "Privat Label"
+  }
+]

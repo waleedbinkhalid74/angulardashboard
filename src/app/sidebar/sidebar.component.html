@@ -1,6 +1,6 @@
 <ul class="nav nav-pills flex-column">
     <li class="nav-item">
-        <a class="nav-link" routerLink="/sales">Sales Volume</a>
+        <a class="nav-link" routerLink="/sales" style="text-align: center;">Filters</a>
         <div class="custom-slider">
             <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"
                 (userChangeEnd)="onUserChangeEnd($event)">
@@ -8,3 +8,4 @@
         </div>
     </li>
 </ul>
+<app-article-hierarchy></app-article-hierarchy>

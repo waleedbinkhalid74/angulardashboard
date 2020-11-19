@@ -9,7 +9,7 @@ html{
 
 body{
     font-family: 'Source Sans Pro', sans-serif;
-    background-color: #1C2228;
+    background-color: #15192a;
     color: #f7fff7;
     height: 100%;
 }
@@ -33,7 +33,7 @@ a:hover{
 }
 
 .card-theme{
-    background-color: #191f26;
+    background-color: #1f263c;
     border: none;
     border-radius: 2px;
 
@@ -47,7 +47,7 @@ a:hover{
 }
 
 .card-body.theme{
-    background-color: #494f56;
+    background-color: #1f263c;
 
 }
 
@@ -59,3 +59,51 @@ a:hover{
 .section-container{
     padding: 30px;
 }
+
+
+/*_________________Slider Styling___________________*/
+
+.custom-slider .ngx-slider .ngx-slider-bar {
+    background: #ffe4d1;
+    height: 2px;
+  }
+  .custom-slider .ngx-slider .ngx-slider-selection {
+    background: white;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-pointer {
+    width: 8px;
+    height: 16px;
+    top: auto; /* to remove the default positioning */
+    bottom: 0;
+    background-color: #eee;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-bubble {
+    bottom: 14px;
+    color: white;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-limit {
+    font-weight: bold;
+    color: orange;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick {
+    width: 1px;
+    height: 10px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #ffe4d1;
+    top: -1px;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+    background: white;
+  }

@@ -17,6 +17,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NumberSuffixPipe } from './number-suffix.pipe';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { UserService } from './user.service';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ArticleHierarchyComponent } from './article-hierarchy/article-hierarchy.component';
+import { FormsModule } from '@angular/forms';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,7 @@ import { UserService } from './user.service';
     LineChartComponent,
     PieChartComponent,
     NumberSuffixPipe,
+    ArticleHierarchyComponent
   ],
   imports: [
     BrowserModule,
@@ -37,8 +42,12 @@ import { UserService } from './user.service';
     RouterModule.forChild(appRoutes),
     ChartsModule,
     HttpClientModule,
-    NgxSliderModule
-  ],
+    NgxSliderModule,    
+    MatCheckboxModule,
+    FormsModule,
+    MatExpansionModule
+
+    ],
   providers: [UserService],
   bootstrap: [AppComponent]
 })
