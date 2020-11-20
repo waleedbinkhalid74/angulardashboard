@@ -33,7 +33,7 @@ export class LineChartComponent implements OnInit {
       val => this.lineChartLabels = val,
     );
 //    this.cdr.detectChanges();
-    console.log("In line comp", this.salesVolume);
+//    console.log("In line comp", this.salesVolume);
 //    this.key_acc_data = <any>keyacc.default;
 
     for (var _i = 0; _i < this.measurements_data.length; _i++) {
@@ -72,7 +72,7 @@ export class LineChartComponent implements OnInit {
  //   this.lineChartxArray   = filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, this.filter_start_date, this.filter_end_date)[0];
  //   this.sumSalesVolume = filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, this.filter_start_date, this.filter_end_date)[1];
     //console.log(filterByDate(this.salesVolume[0].xArray, this.salesVolume[0].data, filter_start_date, filter_end_date));
-    console.log(this.sumSalesVolume);
+  //  console.log(this.sumSalesVolume);
   }
   salesVolume: any[] = [
     { data: this.sumSalesVolume , xArray: this.lineChartxArray, label: "Sales Volume" }

@@ -8,7 +8,7 @@
     </span>
     <span class="example-list-section">
         <ul class="hidden" *ngIf="hidden">
-            <li *ngFor="let subtask of task.subtasks">
+            <li *ngFor="let subtask of task.subtasks" >
                 <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
                     (ngModelChange)="updateAllComplete()">
                     {{subtask.name}}

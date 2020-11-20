@@ -21,6 +21,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ArticleHierarchyComponent } from './article-hierarchy/article-hierarchy.component';
 import { FormsModule } from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
+import { UniquefilterPipe } from './uniquefilter.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import {MatExpansionModule} from '@angular/material/expansion';
     LineChartComponent,
     PieChartComponent,
     NumberSuffixPipe,
-    ArticleHierarchyComponent
+    ArticleHierarchyComponent,
+    UniquefilterPipe
   ],
   imports: [
     BrowserModule,

@@ -10,6 +10,13 @@ export interface Task {
   subtasks?: Task[];
 }
 
+export interface artDataSet {
+  GrII: string;
+  GrI: string[];
+  ArtBez: string[];
+  ArtNr: number[];
+  id: number[];
+}
 
 @Component({
   selector: 'app-article-hierarchy',
@@ -64,26 +71,40 @@ export class ArticleHierarchyComponent implements OnInit {
   constructor(private userService: UserService) { }
 
   articleData: any[]; //Data from dimension article 
+  articleFilter1: string[];
 
   ngOnInit(): void {
     this.userService.castArticleData.subscribe(
       val => this.articleData = val,
     );
-    uniqueJSON(this.articleData);
+
+    this.articleFilter1 = uniqueJSON(this.articleData);
+
   }
 
 }
+
 
 function uniqueJSON(jsonfile) {
   var lookup = {};
   var result = [];
   for (var _j = 0; _j < jsonfile.length; _j++) {
-    console.log(jsonfile[_j].GrII);
+
     if (!(jsonfile[_j].GrII in lookup)) {
       lookup[jsonfile[_j].GrII] = 1;
       result.push(jsonfile[_j].GrII);
     }
   }
-  var unique = jsonfile.filter((v, i, a) => a.indexOf(v) === i);
-  console.log(unique);
+  return result;
 }
+
+/*task: Task = {
+    name: 'Indeterminate',
+    completed: false,
+    color: 'primary',
+    subtasks: [
+      { name: 'Primary', completed: false, color: 'primary' },
+      { name: 'Accent', completed: false, color: 'accent' },
+      { name: 'Warn', completed: false, color: 'warn' }
+    ]
+  };*/
