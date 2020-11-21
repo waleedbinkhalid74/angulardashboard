@@ -17,25 +17,60 @@
         </ul>
     </span>
 </section>
--->
+___________________________________________________________________________________
+
 <section class="example-section">
     <span class="example-list-section">
         <ul class="hidden" style="list-style-type: none;">
-            <li *ngFor="let GrII of articleData | uniquefilter: 'GrII'" style="font-size: 14px;">
+            <li *ngFor="let GrII of structuresArticleData[0].GrII">
                 <mat-checkbox>
                     {{GrII}}
                 </mat-checkbox>
-                <a (click)="toggle()" style="size: 1px; font-weight: bolder;"> + </a>
-                <span class="example-list-section">
-                    <ul class="hidden" *ngIf="hidden" style="list-style-type: none;">
-                        <li *ngFor="let GrI of articleData | uniquefilter: 'GrI'" style="font-size: 12px;">
-                            <mat-checkbox>
-                                {{GrI}}
-                            </mat-checkbox>
-                        </li>
-                    </ul>
-                </span>
-            </li>
-        </ul>
-    </span>    
+                <a (click)="toggle()" style="size: 1px; font-weight: bolder;"> + </a> 
+<span class="example-list-section">
+    <ul class="hidden" *ngIf="hidden" style="list-style-type: none;">
+        <li *ngFor="let GrI of structuresArticleData[0].GrII" style="font-size: 12px;">
+            <mat-checkbox>
+                {{GrI.GrI}}
+            </mat-checkbox>
+        </li>
+    </ul>
+</span>
+</li>
+</ul>
+</span>    
 </section>
+-->
+<div style="overflow: scroll; height: 500px; overflow-x: hidden;">
+    <section class="example-section">
+        <span class="example-list-section">
+            <ul class="first-layer" style="list-style-type: none;">
+                <li *ngFor="let gr2 of structuresArticleData[0].GrII">
+                    <mat-checkbox>
+                        {{gr2}}
+                    </mat-checkbox>
+                    <!--                <a (click)="toggle()" style="size: 1px; font-weight: bolder;"> + </a>-->
+                    <span class="example-list-section">
+                        <ul class="second-layer" style="list-style-type: none;">
+                            <li *ngFor="let gr1 of structuresArticleData[0][gr2].GrI" style="font-size: 12px;">
+                                <mat-checkbox>
+                                    {{gr1}}
+                                </mat-checkbox>
+                                <span class="example-list-section">
+                                    <ul class="third-layer" style="list-style-type: none;">
+                                        <li *ngFor="let artbez of structuresArticleData[0][gr2][gr1].ArtBez"
+                                            style="font-size: 12px;">
+                                            <mat-checkbox>
+                                                {{artbez}}
+                                            </mat-checkbox>
+                                        </li>
+                                    </ul>
+                                </span>
+                            </li>
+                        </ul>
+                    </span>
+                </li>
+            </ul>
+        </span>
+    </section>
+</div>

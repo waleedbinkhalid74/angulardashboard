@@ -15,7 +15,6 @@ export interface artDataSet {
 
 
 export class UniquefilterPipe implements PipeTransform {
-
   transform(value: unknown, filterType1:unknown): unknown {
     if (filterType1 == 'GrII'){
       return uniqueValueGrII(value);
