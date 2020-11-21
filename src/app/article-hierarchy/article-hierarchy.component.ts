@@ -16,6 +16,7 @@ export interface artDataSet {
   ArtBez: string[];
   ArtNr: number[];
   id: number[];
+  completed: boolean;
 }
 
 @Component({
@@ -26,6 +27,7 @@ export interface artDataSet {
 export class ArticleHierarchyComponent implements OnInit {
   showMore = 'show More';
   hidden: boolean;
+
   toggle() {
     this.hidden = !this.hidden;
     if (this.hidden) {
@@ -68,37 +70,49 @@ export class ArticleHierarchyComponent implements OnInit {
     }
     this.task.subtasks.forEach(t => t.completed = completed);
   }
+
   constructor(private userService: UserService) { }
 
   articleData: any[]; //Data from dimension article 
-  articleFilter1: string[];
 
   ngOnInit(): void {
     this.userService.castArticleData.subscribe(
       val => this.articleData = val,
     );
-
-    this.articleFilter1 = uniqueJSON(this.articleData);
-
+    console.log(uniqueJSONGrII(this.articleData))
   }
 
 }
 
 
-function uniqueJSON(jsonfile) {
-  var lookup = {};
+function uniqueJSONGrII(jsonfile) {
+  var lookupGrII = {};
   var result = [];
   for (var _j = 0; _j < jsonfile.length; _j++) {
-
-    if (!(jsonfile[_j].GrII in lookup)) {
-      lookup[jsonfile[_j].GrII] = 1;
-      result.push(jsonfile[_j].GrII);
+    if (!(jsonfile[_j].GrII in lookupGrII)) {
+      lookupGrII[jsonfile[_j].GrII] = 1;
+      result.push({
+        GrII: jsonfile[_j].GrII,
+        GrI: uniqueJSONGrI(jsonfile, jsonfile[_j].GrII)
+      });
     }
   }
   return result;
 }
 
-/*task: Task = {
+function uniqueJSONGrI(jsonfile, filterElement) {
+  var lookupGrI = {};
+  var result = [];
+  for (var _j = 0; _j < jsonfile.length; _j++) {
+    if (jsonfile[_j].GrII==filterElement && !(jsonfile[_j].GrI in lookupGrI)) {
+      lookupGrI[jsonfile[_j].GrI] = 1;
+      result.push(jsonfile[_j].GrI);
+    }
+  }
+  return result;
+}
+
+/* task: Task = {
     name: 'Indeterminate',
     completed: false,
     color: 'primary',
@@ -107,4 +121,4 @@ function uniqueJSON(jsonfile) {
       { name: 'Accent', completed: false, color: 'accent' },
       { name: 'Warn', completed: false, color: 'warn' }
     ]
-  };*/
+  }; */

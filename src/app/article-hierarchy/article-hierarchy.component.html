@@ -1,14 +1,14 @@
+<!--
 <section class="example-section">
     <span class="example-list-section">
-        <a (click)="toggle()" style="size: 1px; font-weight: bolder;"> + </a>
         <mat-checkbox class="example-margin" [checked]="allComplete" [indeterminate]="someComplete()"
             (change)="setAll($event.checked)">
             {{task.name}}
         </mat-checkbox>
     </span>
     <span class="example-list-section">
-        <ul class="hidden" *ngIf="hidden">
-            <li *ngFor="let subtask of task.subtasks" >
+        <ul>
+            <li *ngFor="let subtask of task.subtasks">
                 <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
                     (ngModelChange)="updateAllComplete()">
                     {{subtask.name}}
@@ -16,4 +16,26 @@
             </li>
         </ul>
     </span>
+</section>
+-->
+<section class="example-section">
+    <span class="example-list-section">
+        <ul class="hidden" style="list-style-type: none;">
+            <li *ngFor="let GrII of articleData | uniquefilter: 'GrII'" style="font-size: 14px;">
+                <mat-checkbox>
+                    {{GrII}}
+                </mat-checkbox>
+                <a (click)="toggle()" style="size: 1px; font-weight: bolder;"> + </a>
+                <span class="example-list-section">
+                    <ul class="hidden" *ngIf="hidden" style="list-style-type: none;">
+                        <li *ngFor="let GrI of articleData | uniquefilter: 'GrI'" style="font-size: 12px;">
+                            <mat-checkbox>
+                                {{GrI}}
+                            </mat-checkbox>
+                        </li>
+                    </ul>
+                </span>
+            </li>
+        </ul>
+    </span>    
 </section>
