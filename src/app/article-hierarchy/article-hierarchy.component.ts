@@ -62,7 +62,7 @@ export class ArticleHierarchyComponent implements OnInit {
   }
 
   someComplete(completed: boolean, key1, key2) {
-    //    console.log(this.structuresArticleData[0][key1][key2].Article);
+        console.log(this.structuresArticleData);
     //    console.log(this.structuresArticleData[0][key1][key2].IndeterStatus);
     //    console.log(this.structuresArticleData[0][key1]);
     //    return false;

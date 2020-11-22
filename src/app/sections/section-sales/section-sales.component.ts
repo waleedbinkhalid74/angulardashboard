@@ -31,7 +31,7 @@ export class SectionSalesComponent implements OnInit {
      this.userService.castSumKeyAccManager.subscribe(
       val => this.sumKeyAccManager = val
     );
-     this.cdr.detectChanges();
+//     this.cdr.detectChanges();
 
 
     for (var _j = 0; _j < this.key_acc_data.length; _j++) {

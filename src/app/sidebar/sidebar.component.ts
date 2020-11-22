@@ -38,8 +38,6 @@ export class SidebarComponent implements OnInit {
     this.lowVal = this.getChangeContextString(changeContext)[0];
     this.highVal = this.getChangeContextString(changeContext)[1];
     this.userService.editUser(this.lowVal, this.highVal, this.measurementDataJSON, this.keyAccManagerNames);
-//    console.log("The LOW value is now: ", this.lowVal);
-//    console.log("The HIGH value is now: ", this.highVal);
   }
 
   getChangeContextString(changeContext: ChangeContext): number[] {

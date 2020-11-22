@@ -46,18 +46,18 @@ export class UserService {
     this.sumKeyAccManager.next(keyAccManagerSummer(this.keyAccMananger.value, this.tempMeasurementsArray.value));
     this.sumSalesVolume.next(salesChartData(this.tempMeasurementsArray.value)[0]);
     this.datesXArray.next(salesChartData(this.tempMeasurementsArray.value)[1]);
-    console.log(this.datesXArray.value);
+    console.log(this.tempMeasurementsArray.value);
   }
 
   editArticleData(structuredArticleData) {
     var unselectedElements = [];
-//    console.log(structuredArticleData);
+    //    console.log(structuredArticleData);
     for (const property1 in structuredArticleData[0]) {
       if (!Array.isArray(structuredArticleData[0][property1])) {
         for (const property2 in structuredArticleData[0][property1]) {
           if (!Array.isArray(structuredArticleData[0][property1][property2]) && (typeof structuredArticleData[0][property1][property2] === "object")) {
             for (var i = 0; i < structuredArticleData[0][property1][property2].Article.length; i++) {
-              if(structuredArticleData[0][property1][property2].Article[i].completed == false){
+              if (structuredArticleData[0][property1][property2].Article[i].completed == false) {
                 unselectedElements.push(structuredArticleData[0][property1][property2].Article[i].name);
               }
             }
@@ -65,18 +65,32 @@ export class UserService {
         }
       }
     }
-    console.log(unselectedElements);
     this.getArticleNumber(unselectedElements);
   }
 
-  getArticleNumber(ArtBez){
+  getArticleNumber(ArtBez) {
     var unselectedArtNr = [];
-    console.log(this.articleData.value)
-    for (var i=0; i<this.articleData.value.length; i++){
-      if(ArtBez.includes(this.articleData.value[i].ArtBez)){
+    for (var i = 0; i < this.articleData.value.length; i++) {
+      if (ArtBez.includes(this.articleData.value[i].ArtBez)) {
         unselectedArtNr.push(this.articleData.value[i].ArtNr)
       }
     }
+    this.filterArticle(unselectedArtNr);
+  }
+
+  filterArticle(artnr) {
+    console.log(this.tempMeasurementsArray.value);
+    this.tempMeasurementsArray.next(this.measurementData.value.filter(function (value) {
+      return !artnr.includes(value.ArtNr);
+    }));
+//    console.log(new Date((this.highDate.value + 1).toString()))
+    var hDate = this.highDate.value;
+    var lDate = this.lowDate.value;
+    this.tempMeasurementsArray.next(this.tempMeasurementsArray.value.filter(function (value) {
+      return value.Date <= new Date((hDate + 1).toString()) && value.Date >= new Date((lDate).toString());
+    }));
+    this.sumSalesVolume.next(salesChartData(this.tempMeasurementsArray.value)[0]);
+    console.log(this.tempMeasurementsArray.value);
   }
 
   ExcelDateToJSDate(serial) {
