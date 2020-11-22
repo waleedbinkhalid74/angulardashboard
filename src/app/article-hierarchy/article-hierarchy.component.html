@@ -1,22 +1,5 @@
 <!--
-<section class="example-section">
-    <span class="example-list-section">
-        <mat-checkbox class="example-margin" [checked]="allComplete" [indeterminate]="someComplete()"
-            (change)="setAll($event.checked)">
-            {{task.name}}
-        </mat-checkbox>
-    </span>
-    <span class="example-list-section">
-        <ul>
-            <li *ngFor="let subtask of task.subtasks">
-                <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
-                    (ngModelChange)="updateAllComplete()">
-                    {{subtask.name}}
-                </mat-checkbox>
-            </li>
-        </ul>
-    </span>
-</section>
+
 ___________________________________________________________________________________
 
 <section class="example-section">
@@ -40,27 +23,46 @@ ________________________________________________________________________________
 </ul>
 </span>    
 </section>
+-----------------------------------------------------------------------------------------
+<section class="example-section">
+    <span class="example-list-section">
+        <mat-checkbox class="example-margin" [checked]="allComplete" [indeterminate]="someComplete()"
+            (change)="setAll($event.checked)">
+            {{task.name}}
+        </mat-checkbox>
+    </span>
+    <span class="example-list-section">
+        <ul>
+            <li *ngFor="let subtask of task.subtasks">
+                <mat-checkbox [(ngModel)]="subtask.completed" [color]="subtask.color"
+                    (ngModelChange)="updateAllComplete()">
+                    {{subtask.name}}
+                </mat-checkbox>
+            </li>
+        </ul>
+    </span>
+</section>
 -->
 <div style="overflow: scroll; height: 500px; overflow-x: hidden;">
     <section class="example-section">
         <span class="example-list-section">
             <ul class="first-layer" style="list-style-type: none;">
                 <li *ngFor="let gr2 of structuresArticleData[0].GrII">
-                    <mat-checkbox>
+                    <mat-checkbox [checked]="structuresArticleData[0][gr2].completed" [indeterminate]="structuresArticleData[0][gr2].IndeterStatus" (change)="setAll1($event.checked, gr2)">
                         {{gr2}}
                     </mat-checkbox>
                     <!--                <a (click)="toggle()" style="size: 1px; font-weight: bolder;"> + </a>-->
                     <span class="example-list-section">
                         <ul class="second-layer" style="list-style-type: none;">
-                            <li *ngFor="let gr1 of structuresArticleData[0][gr2].GrI" style="font-size: 12px;">
-                                <mat-checkbox>
+                            <li *ngFor="let gr1 of structuresArticleData[0][gr2].GrI; let i = index" style="font-size: 12px;">
+                                <mat-checkbox [checked]="structuresArticleData[0][gr2].GrISummary[i].completed" [indeterminate]="structuresArticleData[0][gr2][gr1].IndeterStatus" (change)="setAll($event.checked, gr2, gr1)">
                                     {{gr1}}
                                 </mat-checkbox>
                                 <span class="example-list-section">
                                     <ul class="third-layer" style="list-style-type: none;">
-                                        <li *ngFor="let artbez of structuresArticleData[0][gr2][gr1].ArtBez"
+                                        <li *ngFor="let artbez of structuresArticleData[0][gr2][gr1].ArtBez; let j = index"
                                             style="font-size: 12px;">
-                                            <mat-checkbox>
+                                            <mat-checkbox [(ngModel)]="structuresArticleData[0][gr2][gr1].Article[j].completed" (ngModelChange)="updateAllComplete(gr2,gr1,j)" (change)="someComplete($event.checked, gr2,gr1)">
                                                 {{artbez}}
                                             </mat-checkbox>
                                         </li>
