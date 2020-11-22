@@ -43,6 +43,7 @@ ________________________________________________________________________________
     </span>
 </section>
 -->
+
 <div style="overflow: scroll; height: 500px; overflow-x: hidden;">
     <section class="example-section">
         <span class="example-list-section">
@@ -55,7 +56,7 @@ ________________________________________________________________________________
                     <span class="example-list-section">
                         <ul class="second-layer" style="list-style-type: none;">
                             <li *ngFor="let gr1 of structuresArticleData[0][gr2].GrI; let i = index" style="font-size: 12px;">
-                                <mat-checkbox [checked]="structuresArticleData[0][gr2].GrISummary[i].completed" [indeterminate]="structuresArticleData[0][gr2][gr1].IndeterStatus" (change)="setAll($event.checked, gr2, gr1)">
+                                <mat-checkbox [checked]="structuresArticleData[0][gr2].GrISummary[i].completed" [indeterminate]="structuresArticleData[0][gr2][gr1].IndeterStatus" (change)="setAll($event.checked, gr2, gr1, i)">
                                     {{gr1}}
                                 </mat-checkbox>
                                 <span class="example-list-section">

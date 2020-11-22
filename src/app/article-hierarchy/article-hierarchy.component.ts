@@ -57,6 +57,7 @@ export class ArticleHierarchyComponent implements OnInit {
   updateAllComplete(key1, key2, iterator) {
     //    console.log(this.structuresArticleData[0][key1][key2].Article[iterator])
     this.allComplete = this.structuresArticleData[0][key1][key2].Article != null && this.structuresArticleData[0][key1][key2].Article.every(t => t.completed);
+    this.userService.editArticleData(this.structuresArticleData); //Call to editArticleData in user Service
     console.log(this.structuresArticleData);
   }
 
@@ -65,7 +66,8 @@ export class ArticleHierarchyComponent implements OnInit {
     //    console.log(this.structuresArticleData[0][key1][key2].IndeterStatus);
     //    console.log(this.structuresArticleData[0][key1]);
     //    return false;
-    console.log("HI");
+    //    console.log("HI");
+    console.log(this.structuresArticleData);
     if (this.structuresArticleData[0][key1][key2].Article == null) {
       this.structuresArticleData[0][key1][key2].IndeterStatus = false;
       //      this.structuresArticleData[0][key1].IndeterStatus = false;
@@ -73,7 +75,6 @@ export class ArticleHierarchyComponent implements OnInit {
     if (this.structuresArticleData[0][key1][key2].Article.filter(t => t.completed).length == this.structuresArticleData[0][key1][key2].Article.length) {
       this.structuresArticleData[0][key1][key2].IndeterStatus = false;
       this.structuresArticleData[0][key1].IndeterStatus = false;
-
     }
     else {
       this.structuresArticleData[0][key1][key2].IndeterStatus = this.structuresArticleData[0][key1][key2].Article.filter(t => t.completed).length > 0;
@@ -82,19 +83,43 @@ export class ArticleHierarchyComponent implements OnInit {
 
   }
 
-  setAll(completed: boolean, key1, key2) {
+  setAll(completed: boolean, key1, key2, counter) {
     this.allComplete = completed;
     if (this.structuresArticleData[0][key1][key2].Article == null) {
       return;
     }
     this.structuresArticleData[0][key1][key2].Article.forEach(t => t.completed = completed);
+//    this.structuresArticleData[0][key1].GrISummary[counter].completed = completed;
+    this.userService.editArticleData(this.structuresArticleData); //Call to editArticleData in user Service
+    console.log(this.structuresArticleData[0][key1].GrISummary)
+    if (this.structuresArticleData[0][key1].GrISummary.forEach(element => element.completed == true))
+    {
+      console.log("Each is true")
+      this.structuresArticleData[0][key1].IndeterStatus = false;
+      return;
+    }
+    else if (this.structuresArticleData[0][key1][key2].Article.filter(t => t.completed).length < this.structuresArticleData[0][key1][key2].Article.length) {
+      this.structuresArticleData[0][key1].IndeterStatus = true;
+      
+    }
+
+    //    this.someComplete(true, key1, key2);
   }
 
   setAll1(completed: boolean, key1) {
-    this.structuresArticleData[0][key1].GrISummary.forEach(element => {
-      element.completed=true;
-    }); ;
-    
+    this.allComplete = completed;
+ //   console.log(completed)
+    this.structuresArticleData[0][key1].GrISummary.forEach(element => element.completed = completed);
+    for (var i=0; i<this.structuresArticleData[0][key1].GrISummary.length; i++){
+//      console.log(this.structuresArticleData[0][key1].GrISummary[i].name)
+      this.structuresArticleData[0][key1][this.structuresArticleData[0][key1].GrISummary[i].name].Article.forEach(element => element.completed = completed);
+    }
+//    console.log("setAll 1")
+    this.userService.editArticleData(this.structuresArticleData); //Call to editArticleData in user Service
+    for (var i = 0; i < this.structuresArticleData[0][key1].GrISummary.length; i++) {
+      //      console.log(this.structuresArticleData[0][key1].GrISummary[i].name);
+      this.structuresArticleData[0][key1][this.structuresArticleData[0][key1].GrISummary[i].name].Article.forEach(t => t.completed = completed);
+    }
     // this.allComplete = completed;
     // if (this.structuresArticleData[0][key1] == null) {
     //   return;
@@ -102,10 +127,15 @@ export class ArticleHierarchyComponent implements OnInit {
     // this.structuresArticleData[0][key1].forEach(t => t.completed = completed);
   }
 
+  tempfunc(){
+    console.log("HI")
+  }
+
   constructor(private userService: UserService) { }
 
   articleData: any[]; //Data from dimension article 
   structuresArticleData: any[];
+
   ngOnInit(): void {
     this.userService.castArticleData.subscribe(
       val => this.articleData = val,
@@ -145,7 +175,8 @@ function uniqueJSONGrI(jsonfile, filterElement) {
       result.push(jsonfile[_j].GrI);
       result2.push({
         name: jsonfile[_j].GrI,
-        completed: true
+        completed: true,
+        indeterminate: false
       });
     }
     ans["GrI"] = result;
@@ -194,13 +225,4 @@ function uniqueJSONAssignComplete(jsonfile, filterElement1, filterElement2, filt
   //  console.log(result)
   return result;
 }
-/* task: Task = {
-    name: 'Indeterminate',
-    completed: false,
-    color: 'primary',
-    subtasks: [
-      { name: 'Primary', completed: false, color: 'primary' },
-      { name: 'Accent', completed: false, color: 'accent' },
-      { name: 'Warn', completed: false, color: 'warn' }
-    ]
-  }; */
+

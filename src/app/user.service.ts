@@ -15,10 +15,10 @@ export class UserService {
   private highDate = new BehaviorSubject<number>(2020);
   private measurementData = new BehaviorSubject<any[]>(mdata.default);
   private keyAccMananger = new BehaviorSubject<any[]>(kdata.default);
-  private sumKeyAccManager = new BehaviorSubject<number[]>([0,0,0]);
+  private sumKeyAccManager = new BehaviorSubject<number[]>([0, 0, 0]);
   private tempMeasurementsArray = new BehaviorSubject<any[]>(mdata.default);
-  private sumSalesVolume = new BehaviorSubject<number[]>([0,0,0,0,0,0]);
-  private datesXArray = new BehaviorSubject<number[]>([2015,2016,2017,2018,2019,2020]);
+  private sumSalesVolume = new BehaviorSubject<number[]>([0, 0, 0, 0, 0, 0]);
+  private datesXArray = new BehaviorSubject<number[]>([2015, 2016, 2017, 2018, 2019, 2020]);
   private articleData = new BehaviorSubject<any[]>(adata.default);
 
   castHighDate = this.highDate.asObservable();
@@ -39,14 +39,44 @@ export class UserService {
   editUser(lDate, hDate, mData, kamNames) {
     this.highDate.next(hDate);
     this.lowDate.next(lDate);
-//    this.sumSalesVolume.next(new Array(hDate - lDate).fill(0));
-    this.tempMeasurementsArray.next(this.measurementData.value.filter(function(value){
-        return value.Date <= new Date((hDate+1).toString()) && value.Date >= new Date((lDate).toString()) ;
+    //    this.sumSalesVolume.next(new Array(hDate - lDate).fill(0));
+    this.tempMeasurementsArray.next(this.measurementData.value.filter(function (value) {
+      return value.Date <= new Date((hDate + 1).toString()) && value.Date >= new Date((lDate).toString());
     }));
     this.sumKeyAccManager.next(keyAccManagerSummer(this.keyAccMananger.value, this.tempMeasurementsArray.value));
     this.sumSalesVolume.next(salesChartData(this.tempMeasurementsArray.value)[0]);
     this.datesXArray.next(salesChartData(this.tempMeasurementsArray.value)[1]);
     console.log(this.datesXArray.value);
+  }
+
+  editArticleData(structuredArticleData) {
+    var unselectedElements = [];
+//    console.log(structuredArticleData);
+    for (const property1 in structuredArticleData[0]) {
+      if (!Array.isArray(structuredArticleData[0][property1])) {
+        for (const property2 in structuredArticleData[0][property1]) {
+          if (!Array.isArray(structuredArticleData[0][property1][property2]) && (typeof structuredArticleData[0][property1][property2] === "object")) {
+            for (var i = 0; i < structuredArticleData[0][property1][property2].Article.length; i++) {
+              if(structuredArticleData[0][property1][property2].Article[i].completed == false){
+                unselectedElements.push(structuredArticleData[0][property1][property2].Article[i].name);
+              }
+            }
+          }
+        }
+      }
+    }
+    console.log(unselectedElements);
+    this.getArticleNumber(unselectedElements);
+  }
+
+  getArticleNumber(ArtBez){
+    var unselectedArtNr = [];
+    console.log(this.articleData.value)
+    for (var i=0; i<this.articleData.value.length; i++){
+      if(ArtBez.includes(this.articleData.value[i].ArtBez)){
+        unselectedArtNr.push(this.articleData.value[i].ArtNr)
+      }
+    }
   }
 
   ExcelDateToJSDate(serial) {
@@ -70,8 +100,8 @@ export class UserService {
 
 }
 
-function keyAccManagerSummer(kdata, mdata){
-  var sumKamSales: number[] = [0,0,0];
+function keyAccManagerSummer(kdata, mdata) {
+  var sumKamSales: number[] = [0, 0, 0];
   for (var _j = 0; _j < kdata.length; _j++) {
     if (kdata[_j].Kam == "Maier") {
       for (var k = 0; k < mdata.length; k++) {
@@ -98,14 +128,14 @@ function keyAccManagerSummer(kdata, mdata){
       }
     }
     else {
-        console.log("Error. Name not in list");
+      console.log("Error. Name not in list");
     }
   }
   return sumKamSales;
 }
 
-function salesChartData(mdata){
-  var sumSalesYear: number[] = [0,0,0,0,0,0];
+function salesChartData(mdata) {
+  var sumSalesYear: number[] = [0, 0, 0, 0, 0, 0];
   var dates: number[] = [2015, 2016, 2017, 2018, 2019, 2020];
 
   for (var _i = 0; _i < mdata.length; _i++) {
@@ -132,15 +162,14 @@ function salesChartData(mdata){
       console.log("Error date not in list");
     }
   }
-  for(var i=0; i<sumSalesYear.length; i++ )
-     { 
-        if(sumSalesYear[i]==0){
-            sumSalesYear.splice(i,1); 
-            dates.splice(i,1)
-            i--;
-          }
-      }
+  for (var i = 0; i < sumSalesYear.length; i++) {
+    if (sumSalesYear[i] == 0) {
+      sumSalesYear.splice(i, 1);
+      dates.splice(i, 1)
+      i--;
+    }
+  }
 
-//console.log([sumSalesYear, dates]);
+  //console.log([sumSalesYear, dates]);
   return [sumSalesYear, dates];
 }
